@@ -32,20 +32,10 @@ def inverse(X):
     return np.linalg.inv(X)
 
 def theta_final(X, Y):
-    return inverse(transpose(X) * X) * transpose(X) * Y
+    return (inverse(transpose(X) * X) * transpose(X)) * Y
 
 def multiply(a, b):
-    if (a.shape[1] == b.shape[0]):
-        temp = np.zeros((a.shape[0], b.shape[1]))
-        for i in range(a.shape[0]):
-            for j in range(b.shape[1]):
-                sum = 0
-                for k in range(a.shape[1]):
-                    sum = sum + a[i][k]*b[k][j]
-                temp[i][j] = sum
-        return temp
-    else:
-        raise(ValueError("Incorrect Dimensions"))
+    return np.dot(a, b)
 
 if __name__=="__main__":
     filename = input("Enter the name of the file. ")
